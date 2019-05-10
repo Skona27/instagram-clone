@@ -1,0 +1,10 @@
+{
+  "name": "insta",
+  "version": "1.0.0",
+  "description": "Instagram clone",
+  "license": "ISC",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ]
+}
