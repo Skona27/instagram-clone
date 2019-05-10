@@ -1,12 +1,15 @@
 {
   "compilerOptions": {
     "strict": true,
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "./dist",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "allowSyntheticDefaultImports": true,
-    "sourceMap": true
+    "removeComments": true
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules"]
