@@ -3,10 +3,16 @@
     "strict": true,
     "target": "esnext",
     "module": "esnext",
+    "jsx": "preserve",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "allowSyntheticDefaultImports": true,
+    "removeComments": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
-    "sourceMap": true
+    "preserveConstEnums": true,
+    "sourceMap": true,
   }
 }
