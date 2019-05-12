@@ -19,7 +19,7 @@
     "@emotion/core": "10.0.10",
     "@types/next": "8.0.5",
     "@types/react": "16.8.17",
-    "@types/react-dom": "^16.8.4",
+    "@types/react-dom": "16.8.4",
     "@zeit/next-typescript": "1.1.1",
     "prettier": "1.17.0",
     "tslint": "5.16.0",
