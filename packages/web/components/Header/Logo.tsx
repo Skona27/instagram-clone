@@ -5,7 +5,7 @@ interface IProps {
   src?: string;
 }
 
-const Logo: React.FC<IProps> = React.memo(({ title, src, ...rest }) => {
+export const Logo: React.FC<IProps> = React.memo(({ title, src, ...rest }) => {
   if (src) {
     return <img src={src} alt={title} title={title} />;
   } else {
@@ -17,4 +17,4 @@ const Logo: React.FC<IProps> = React.memo(({ title, src, ...rest }) => {
   }
 });
 
-export default Logo;
+Logo.displayName = "Logo";

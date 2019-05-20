@@ -1,32 +1,34 @@
-import React from 'react';
+import React from "react";
 
 interface IProps {
   title?: string;
   src?: string;
 }
 
-const NavigationButtons: React.FC<IProps> = React.memo(() => {
+export const NavigationButtons: React.FC<IProps> = React.memo(() => {
   const linkStyle = {
-    display: 'flex',
-    margin: '10px'
+    display: "flex",
+    margin: 10
   };
 
+  const links = ["Mój profil", "Powiadomienia", "Hot pics", "Ustawienia"];
+
   return (
-    <div
-      css={{
-        color: '#fff',
-        display: 'flex',
-        flexDirection: 'row',
-        fontFamily: 'Arial'
-      }}
-    >
-      <div css={linkStyle}>Mój profil</div>
-      <div css={linkStyle}>Powiadomienia</div>
-      <div css={linkStyle}>Hot zdjęcia</div>
-      <div css={linkStyle}>Ustawienia</div>
-    </div>
+    <nav>
+      <ul
+        css={{
+          color: "#fff",
+          display: "flex",
+          flexDirection: "row",
+          fontFamily: "Arial"
+        }}
+      >
+        {links.map(link => (
+          <li css={linkStyle}>{link}</li>
+        ))}
+      </ul>
+    </nav>
   );
 });
 
-NavigationButtons.displayName = 'NavigationButtons';
-export default NavigationButtons;
+NavigationButtons.displayName = "NavigationButtons";
