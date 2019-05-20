@@ -1,12 +1,8 @@
 import * as React from "react";
-import { Wrapper } from "../components/Wrapper";
+import { Header } from "../components/Header";
 
 const Index = () => {
-  return (
-    <Wrapper>
-      <h1>Welcome to Next.js!</h1>
-    </Wrapper>
-  );
+  return <Header />;
 };
 
 export default Index;
