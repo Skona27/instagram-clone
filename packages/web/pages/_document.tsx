@@ -1,14 +1,14 @@
 /** @jsx jsx */
-import { Global, css, jsx } from "@emotion/core";
+import { css, Global, jsx } from "@emotion/core";
 import Document, { Head, Main, NextScript } from "next/document";
 
 class MyDocument extends Document {
-  static async getInitialProps(ctx: any) {
+  public static async getInitialProps(ctx: any) {
     const initialProps = await Document.getInitialProps(ctx);
     return { ...initialProps };
   }
 
-  render() {
+  public render() {
     return (
       <html lang="eng">
         <Head>
@@ -24,6 +24,8 @@ class MyDocument extends Document {
               margin: 0;
               padding: 0;
               box-sizing: border-box;
+              @import url("https://fonts.googleapis.com/css?family=Raleway:400,600,700&display=swap");
+              font-family: "Raleway", sans-serif;
             }
           `}
         />
