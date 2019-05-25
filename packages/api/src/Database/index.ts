@@ -11,21 +11,17 @@ export const Database = mysql.createPool({
   database: process.env.DB_DATABASE
 });
 
-// tslint:disable
 Database.getConnection((error, connection) => {
   if (error) {
     switch (error.code) {
       case "PROTOCOL_CONNECTION_LOST":
-        console.error("Database connection was closed.");
-        break;
+        throw new Error("Database connection was closed");
       case "ER_CON_COUNT_ERROR":
-        console.error("Database has too many connections.");
-        break;
+        throw new Error("Database has too many connections");
       case "ECONNREFUSED":
-        console.error("Database connection was refused.");
-        break;
+        throw new Error("Database connection was refused");
       default:
-        console.error(`Database error: ${error}`);
+        throw new Error("Unknown database error");
     }
   }
 

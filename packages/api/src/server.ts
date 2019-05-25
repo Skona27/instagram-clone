@@ -1,17 +1,23 @@
 import * as express from "express";
 import * as morgan from "morgan";
+import * as cors from "cors";
+import * as cookieParser from "cookie-parser";
 import { ErrorRequestHandler, RequestNotFound } from "./Error";
 import * as User from "./User";
 
 const app: express.Application = express();
 
+app.use(cors());
 app.use(morgan("dev"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 app.get("/", (_request: express.Request, response: express.Response) => {
   response.send({ text: "Hello from Express!" });
 });
 
-app.use("/user", User.routes);
+app.use("/user", User.Routes);
 
 app.use(RequestNotFound);
 app.use(ErrorRequestHandler);
