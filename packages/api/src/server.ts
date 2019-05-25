@@ -13,10 +13,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.get("/", (_request: express.Request, response: express.Response) => {
-  response.send({ text: "Hello from Express!" });
-});
-
 app.use("/user", User.Routes);
 
 app.use(RequestNotFound);
