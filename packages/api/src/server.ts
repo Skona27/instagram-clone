@@ -1,19 +1,17 @@
-import * as express from "express";
-import * as morgan from "morgan";
-import { ErrorRequestHandler, RequestNotFound } from "./Error";
+import { config } from "./config";
+import "reflect-metadata";
+import { createExpressServer } from "routing-controllers";
+import { UserController } from "./controllers/UserController";
+import { ConnectionOptions, createConnection } from "typeorm";
 
-const app: express.Application = express();
+createConnection({ ...(config.database as ConnectionOptions) })
+  .then(async connection => {
+    const app = createExpressServer({
+      controllers: [UserController]
+    });
 
-app.use(morgan("dev"));
+    app.listen(4000);
 
-app.get("/", (_request: express.Request, response: express.Response) => {
-  response.send({ text: "Hello from Express!" });
-});
-
-app.use(RequestNotFound);
-app.use(ErrorRequestHandler);
-
-// I don't like this, if anyone know how to set
-// compiler options in tsconfig.json, please feel free to change it.
-// TODO - change it to default export
-module.exports = app;
+    console.log("Express application is up and running on port 4000");
+  })
+  .catch(error => console.log(error));
