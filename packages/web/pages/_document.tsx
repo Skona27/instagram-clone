@@ -16,7 +16,6 @@ class MyDocument extends Document {
             name="viewport"
             content="initial-scale=1.0, width=device-width"
           />
-          <title>Instagram Clone</title>
         </Head>
         <Global
           styles={css`
