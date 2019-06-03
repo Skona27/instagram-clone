@@ -12,4 +12,5 @@ export interface ILogo {
 export interface ILink {
   text: string;
   href: string;
+  isActive?: boolean;
 }

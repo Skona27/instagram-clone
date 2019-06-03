@@ -2,11 +2,9 @@ import * as React from "react";
 import { Wrapper } from "../Wrapper";
 import { Logo } from "./components/Logo";
 import { Navbar } from "./components/Navbar";
-import { data } from "./data";
+import { IHeader } from "./types";
 
-export const Header: React.FC = React.memo(() => {
-  const { logo, elements } = data;
-
+export const Header: React.FC<IHeader> = React.memo(({ logo, elements }) => {
   return (
     <Wrapper>
       <header

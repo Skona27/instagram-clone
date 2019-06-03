@@ -1,21 +1,34 @@
 import * as React from "react";
 import { ILink } from "../types";
 import { NavbarItem } from "./NavbarItem";
+import { withRouter, WithRouterProps } from "next/router";
 
 interface IProps {
   elements: ILink[];
 }
 
-export const Navbar: React.FC<IProps> = React.memo(({ elements }) => {
-  return (
-    <nav>
-      <ul css={{ listStyle: "none", display: "flex" }}>
-        {elements.map((link, index) => (
-          <NavbarItem key={index} text={link.text} href={link.href} />
-        ))}
-      </ul>
-    </nav>
-  );
-});
+const NavbarComponent: React.FC<IProps & WithRouterProps> = React.memo(
+  ({ elements, router }) => {
+    if (!router) {
+      return null;
+    }
 
-Navbar.displayName = "Navbar";
+    return (
+      <nav>
+        <ul css={{ listStyle: "none", display: "flex" }}>
+          {elements.map((link, index) => (
+            <NavbarItem
+              key={index}
+              text={link.text}
+              href={link.href}
+              isActive={link.href === router.route}
+            />
+          ))}
+        </ul>
+      </nav>
+    );
+  }
+);
+
+NavbarComponent.displayName = "Navbar";
+export const Navbar = withRouter(NavbarComponent);
