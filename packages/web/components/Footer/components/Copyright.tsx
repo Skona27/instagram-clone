@@ -10,7 +10,7 @@ export const Copyright: React.FC<ICopyright> = React.memo(({ text }) => {
   return (
     <div
       css={{
-        color: colors.light_grey,
+        color: colors.grey,
         textTransform: "uppercase",
         fontFamily:
           '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',

@@ -26,6 +26,10 @@ class MyDocument extends Document {
               @import url("https://fonts.googleapis.com/css?family=Raleway:400,600,700&display=swap");
               font-family: "Raleway", sans-serif;
             }
+
+            body {
+              overflow-y: scroll;
+            }
           `}
         />
         <body>

@@ -13,7 +13,8 @@ export const ThemeProvider = React.memo((props: any) => {
     white: "#ffffff",
     light_blue: "#3a80c5",
     dark_blue: "#003569",
-    light_grey: "#999"
+    grey: "#999",
+    light_grey: "#efefef"
   };
 
   return (

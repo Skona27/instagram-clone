@@ -16,8 +16,10 @@ export const Wrapper: React.FC<IProps> = React.memo(
         : colors.white;
 
     return (
-      <section css={{ backgroundColor: bgColor, padding }} {...rest}>
-        <div css={{ width: 1200, margin: "0 auto" }}>{children}</div>
+      <section css={{ backgroundColor: bgColor, padding }}>
+        <div css={{ width: 1050, margin: "0 auto" }} {...rest}>
+          {children}
+        </div>
       </section>
     );
   }
