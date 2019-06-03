@@ -1,10 +1,8 @@
 import * as React from "react";
 import { ILink } from "../types";
-import { useTheme } from "@insta/ui";
+import { A } from "@insta/ui";
 
 export const NavigationItem: React.FC<ILink> = React.memo(({ href, text }) => {
-  const { colors } = useTheme();
-
   return (
     <li
       css={{
@@ -13,22 +11,16 @@ export const NavigationItem: React.FC<ILink> = React.memo(({ href, text }) => {
         }
       }}
     >
-      <a
+      <A
         href={href}
         css={{
-          textDecoration: "none",
-          color: colors.dark_blue,
           textTransform: "uppercase",
           fontSize: 12,
-          fontWeight: 600,
-          transition: "color .15s",
-          ":hover": {
-            color: colors.light_blue
-          }
+          fontWeight: 600
         }}
       >
         {text}
-      </a>
+      </A>
     </li>
   );
 });
