@@ -1,5 +1,5 @@
 {
-  "name": "web",
+  "name": "@insta/web",
   "version": "1.0.0",
   "description": "Web application for Instagram clone",
   "license": "ISC",
@@ -12,18 +12,20 @@
   "dependencies": {
     "next": "8.1.0",
     "react": "16.8.6",
-    "react-dom": "16.8.6"
+    "react-dom": "16.8.6",
+    "@insta/ui": "1.0.0"
   },
   "devDependencies": {
-    "@emotion/babel-preset-css-prop": "10.0.9",
-    "@emotion/core": "10.0.10",
-    "@types/next": "8.0.5",
-    "@types/react": "16.8.17",
-    "@types/react-dom": "16.8.4",
+    "@emotion/babel-preset-css-prop": "^10.0.9",
+    "@emotion/core": "^10.0.10",
+    "@types/next": "^8.0.5",
+    "@types/react": "^16.8.19",
+    "@types/react-dom": "^16.8.4",
     "@zeit/next-typescript": "1.1.1",
     "prettier": "1.17.0",
     "tslint": "5.16.0",
     "tslint-config-prettier": "1.18.0",
-    "typescript": "3.4.5"
+    "next-transpile-modules": "2.3.1",
+    "typescript": "3.5.1"
   }
 }
