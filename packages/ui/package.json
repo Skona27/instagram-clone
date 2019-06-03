@@ -1,0 +1,46 @@
+{
+  "name": "@insta/ui",
+  "version": "1.0.0",
+  "main": "dist/plugin.es.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc && rollup -c && rimraf compiled",
+    "dev": "chokidar 'src/**/*.ts' 'src/**/*.tsx' -c 'npm run build'"
+  },
+  "dependencies": {
+    "@babel/core": "^7.1.5",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/preset-env": "^7.1.5",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.1.0",
+    "@emotion/babel-preset-css-prop": "10.0.9",
+    "@emotion/core": "10.0.10",
+    "awesome-typescript-loader": "^5.2.1",
+    "babel-core": "^7.0.0-0",
+    "babel-jest": "^23.6.0",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-require-context-hook": "^1.0.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "chokidar-cli": "^1.2.2",
+    "prettier": "^1.15.2",
+    "react": "^16.8.6",
+    "@types/react": "^16.8.19",
+    "react-dom": "^16.8.6",
+    "@types/react-dom": "^16.8.4",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.67.1",
+    "rollup-plugin-babel": "4.0.3",
+    "rollup-plugin-cleanup": "^3.0.0",
+    "rollup-plugin-commonjs": "^9.1.6",
+    "rollup-plugin-filesize": "^5.0.1",
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-sourcemaps": "^0.4.2",
+    "typescript": "^3.5.1",
+    "webpack": "^4.32.2"
+  }
+}
