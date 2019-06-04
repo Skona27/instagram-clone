@@ -29,7 +29,7 @@ export const comments: IComment[] = [
       name: "ur_mom_lol"
     },
     avatar: {
-      image: "https://i.imgur.com/6YcmrDS.jpg",
+      image: "https://avatars3.githubusercontent.com/u/28456335?s=180&v=4",
       profileLink: "#"
     },
     text: "lame",
@@ -40,7 +40,7 @@ export const comments: IComment[] = [
       name: "rando"
     },
     avatar: {
-      image: "https://i.imgur.com/6YcmrDS.jpg",
+      image: "https://avatars0.githubusercontent.com/u/37121584?s=180&v=4",
       profileLink: "#"
     },
     text: "Super 🙌 miłego popołudnia!!!",
