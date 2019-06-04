@@ -7,8 +7,11 @@ import {
   faBookmark
 } from "@fortawesome/free-regular-svg-icons";
 import { InputComment } from "./InputComment";
+import { post } from "../data";
 
 export const SocialPanel: React.FC = React.memo(() => {
+  // const days = (new Date()).
+
   const iconStyle = {
     width: "20px !important",
     height: "20px !important",
@@ -26,7 +29,7 @@ export const SocialPanel: React.FC = React.memo(() => {
         css={{
           display: "flex",
           flexDirection: "column",
-          padding: "10px 5px 5px 5px",
+          padding: "15px 5px 5px 5px",
           borderBottom: "1px solid #efefef"
         }}
       >
@@ -55,7 +58,7 @@ export const SocialPanel: React.FC = React.memo(() => {
             fontWeight: "bold"
           }}
         >
-          420 likes
+          {post.likes_count} {post.likes_count === 1 ? "like" : "likes"}
         </div>
         <div
           css={{

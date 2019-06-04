@@ -18,3 +18,9 @@ export interface IComment {
   text: string;
   date: Date;
 }
+
+export interface IPost {
+  likes_count: number;
+  date: Date;
+  comments: IComment[];
+}

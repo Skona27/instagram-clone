@@ -1,4 +1,5 @@
 import { IComment } from "./types";
+import { IPost } from "./types";
 
 export const comments: IComment[] = [
   {
@@ -47,3 +48,9 @@ export const comments: IComment[] = [
     date: new Date()
   }
 ];
+
+export const post: IPost = {
+  likes_count: 420,
+  date: new Date("2019-05-27"),
+  comments
+};
