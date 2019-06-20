@@ -29,5 +29,5 @@ yarn test:tsc   # Typescript compilation
 ### API (backend)
 Scripts: 
 ```
-yarn dev        # For development
+yarn start        # For development
 ``` 
