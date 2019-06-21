@@ -9,15 +9,24 @@ import { Media } from "./entities/Media";
 import { MediaService } from "./services/MediaService";
 import { UserService } from "../users/services/UserService";
 import { User } from "../users/entities/User";
+import { LikesService } from "./services/LikesService";
+import { Like } from "./entities/Like";
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([Post]),
     TypeOrmModule.forFeature([Comment]),
     TypeOrmModule.forFeature([Media]),
-    TypeOrmModule.forFeature([User])
+    TypeOrmModule.forFeature([User]),
+    TypeOrmModule.forFeature([Like])
   ],
   controllers: [PostsController],
-  providers: [PostsService, CommentsService, MediaService, UserService]
+  providers: [
+    PostsService,
+    CommentsService,
+    MediaService,
+    UserService,
+    LikesService
+  ]
 })
 export class PostsModule {}

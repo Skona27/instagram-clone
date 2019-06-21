@@ -3,12 +3,15 @@ import { PostsService } from "../services/PostsService";
 import { ICreatePostDTO, IResponsePostDTO } from "../dto/PostsDTOs";
 import { ICreateCommentDTO } from "../dto/CommentsDTOs";
 import { CommentsService } from "../services/CommentsService";
+import { ILikeForCreationDTO } from "../dto/LikesDTOs";
+import { LikesService } from "../services/LikesService";
 
 @Controller("posts")
 export class PostsController {
   constructor(
     private readonly postService: PostsService,
-    private readonly commentService: CommentsService
+    private readonly commentService: CommentsService,
+    private readonly likesService: LikesService
   ) {}
 
   @Get()
@@ -30,5 +33,10 @@ export class PostsController {
   @Post(":id/comments")
   comment(@Param("id") id, @Body() createComment: ICreateCommentDTO) {
     this.commentService.create(id, createComment);
+  }
+
+  @Post(":id/likes")
+  like(@Param("id") id, @Body() createLike: ILikeForCreationDTO) {
+    this.likesService.create(id, createLike);
   }
 }

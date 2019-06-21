@@ -14,8 +14,8 @@ export class UserService {
 
   async findAByID(userID: string): Promise<IUserForResponse> {
     const user = await this.userRepository.findOne({ id: userID });
-    const { email, login } = user;
-    return { email, login };
+    const { email, login, photoUrl } = user;
+    return { email, login, photoUrl };
   }
 
   async create(createUserDTO: ICreateUserDTO) {

@@ -11,4 +11,7 @@ export class User implements IUser {
 
   @Column()
   login: string;
+
+  @Column()
+  photoUrl: string;
 }

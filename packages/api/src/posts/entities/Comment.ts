@@ -16,5 +16,5 @@ export class Comment implements IComment {
   authorID: string;
 
   @Column()
-  createdAt: number;
+  createdAt: Date;
 }

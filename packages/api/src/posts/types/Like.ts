@@ -1,6 +1,5 @@
-export interface IComment {
+export interface ILike {
   id: string;
-  content: string;
   postID: string;
   authorID: string;
   createdAt: Date;

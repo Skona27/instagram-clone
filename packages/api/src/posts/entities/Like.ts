@@ -1,17 +1,17 @@
 import { Entity, Column, PrimaryColumn } from "typeorm";
-import { IPost } from "../types/Post";
+import { ILike } from "../types/Like";
 
 @Entity()
-export class Post implements IPost {
+export class Like implements ILike {
   @PrimaryColumn()
   id: string;
 
   @Column()
-  description: string;
-
-  @Column()
-  createdAt: Date;
+  postID: string;
 
   @Column()
   authorID: string;
+
+  @Column()
+  createdAt: Date;
 }

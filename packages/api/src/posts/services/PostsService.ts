@@ -8,6 +8,7 @@ import { MediaService } from "./MediaService";
 import { CommentsService } from "./CommentsService";
 import * as cryptoRandomString from "crypto-random-string";
 import { UserService } from "../../users/services/UserService";
+import { LikesService } from "./LikesService";
 
 @Injectable()
 export class PostsService {
@@ -16,35 +17,54 @@ export class PostsService {
     private readonly postRepository: Repository<Post>,
     private readonly mediaService: MediaService,
     private readonly commentsService: CommentsService,
-    private readonly userService: UserService
+    private readonly userService: UserService,
+    private readonly likesService: LikesService
   ) {}
 
   async findAll(): Promise<IResponsePostDTO[]> {
-    const posts = await this.postRepository.find();
+    const posts = await this.postRepository.find({
+      order: { createdAt: "DESC" }
+    });
     const post = posts.map(async post => {
       const comments = await this.commentsService.findAllForPost(post.id);
       const media = await this.mediaService.findAllForPost(post.id);
-      const user = await this.userService.findAByID(post.authorID);
+      const author = await this.userService.findAByID(post.authorID);
+      const likes = await this.likesService.findAllForPost(post.id);
 
+      const { id, description, createdAt } = post;
+      const { login, photoUrl } = author;
       return {
-        ...post,
+        id,
+        description,
+        createdAt,
         comments,
-        user,
+        author: { login, photoUrl },
         media,
-        likes: 0
+        likes
       };
     });
 
     return await Promise.all(post);
   }
 
-  async findByID(id: string): Promise<IResponsePostDTO> {
-    const post = await this.postRepository.findOne({ id });
-    const comments = await this.commentsService.findAllForPost(id);
-    const media = await this.mediaService.findAllForPost(id);
-    const user = await this.userService.findAByID(post.authorID);
+  async findByID(postID: string): Promise<IResponsePostDTO> {
+    const post = await this.postRepository.findOne({ id: postID });
+    const comments = await this.commentsService.findAllForPost(postID);
+    const media = await this.mediaService.findAllForPost(postID);
+    const author = await this.userService.findAByID(post.authorID);
+    const likes = await this.likesService.findAllForPost(postID);
 
-    return { ...post, comments, user, media, likes: 0 };
+    const { id, description, createdAt } = post;
+    const { login, photoUrl } = author;
+    return {
+      id,
+      description,
+      createdAt,
+      comments,
+      author: { login, photoUrl },
+      media,
+      likes
+    };
   }
 
   async create(postForCreation: ICreatePostDTO) {
@@ -55,7 +75,7 @@ export class PostsService {
       description,
       id: postID,
       authorID,
-      createdAt: Date.now()
+      createdAt: new Date()
     });
 
     const promises = media.map(async singleMedia => {
