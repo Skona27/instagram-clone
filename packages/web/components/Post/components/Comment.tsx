@@ -1,13 +1,13 @@
 import * as React from "react";
 import { IComment } from "../types";
 
-export const Comment: React.FC<IComment> = React.memo(({ text, author }) => {
+export const Comment: React.FC<IComment> = React.memo(({ content, author }) => {
   return (
     <div css={{ display: "flex", padding: "10px 15px", fontSize: 14 }}>
-      <a href={author.profileLink}>
+      <a href="#">
         <img
-          src={author.photo.src}
-          alt={author.photo.alt}
+          src={author.photoUrl}
+          alt={`avatar-${author.login}`}
           css={{ height: 30, borderRadius: "50%", marginRight: 10 }}
         />
       </a>
@@ -21,9 +21,9 @@ export const Comment: React.FC<IComment> = React.memo(({ text, author }) => {
             marginRight: 5
           }}
         >
-          {author.name}
+          {author.login}
         </span>
-        {text}
+        {content}
       </div>
     </div>
   );

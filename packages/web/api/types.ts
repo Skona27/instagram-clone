@@ -7,6 +7,6 @@ export interface IPageData {
   footer: IFooter;
 }
 
-export interface IIndexPageData extends IPageData {
+export interface IIndexPageData {
   posts: IPost[];
 }

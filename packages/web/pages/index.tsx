@@ -1,14 +1,15 @@
 import * as React from "react";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
-import { Post } from "../components/Post";
 import { indexPage } from "../data/page";
 import { IIndexPageData } from "../api/types";
 import { Wrapper } from "../components/Wrapper";
 import axios from "axios";
+import { IPost } from "../components/Post/types";
+import { Post } from "../components/Post";
 
-const Index = (pageData: IIndexPageData) => {
-  const { header, footer, posts } = pageData;
+const Index = ({ posts }: IIndexPageData) => {
+  const { header, footer } = indexPage;
 
   return (
     <>
@@ -24,10 +25,8 @@ const Index = (pageData: IIndexPageData) => {
 };
 
 Index.getInitialProps = async () => {
-  const response = await axios.get(
-    "https://api.jsonbin.io/b/5cfbb9062132b7426dfd9506"
-  );
-  return response.data;
+  const response = await axios.get<IPost[]>("http://localhost:4000/posts");
+  return { posts: response.data };
 };
 
 export default Index;

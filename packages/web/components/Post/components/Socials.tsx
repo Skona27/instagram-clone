@@ -7,10 +7,11 @@ import {
   faShareSquare,
   faBookmark
 } from "@fortawesome/free-regular-svg-icons";
+import { ILike } from "../types";
 
 interface IProps {
-  likes: number;
-  createdAt: number;
+  likes: ILike[];
+  createdAt: Date;
 }
 
 export const Socials: React.FC<IProps> = React.memo(({ likes, createdAt }) => {
@@ -41,7 +42,7 @@ export const Socials: React.FC<IProps> = React.memo(({ likes, createdAt }) => {
       </div>
 
       <p css={{ fontSize: 14, fontWeight: "bold", marginTop: 10 }}>
-        {likes} likes
+        {likes.length || 0} likes
       </p>
       <p
         css={{
@@ -51,7 +52,7 @@ export const Socials: React.FC<IProps> = React.memo(({ likes, createdAt }) => {
           marginTop: 5
         }}
       >
-        {new Intl.DateTimeFormat("pl-PL").format(createdAt)}
+        {new Intl.DateTimeFormat("pl-PL").format(Date.parse("" + createdAt))}
       </p>
     </div>
   );

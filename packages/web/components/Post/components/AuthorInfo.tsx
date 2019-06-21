@@ -3,7 +3,7 @@ import { IAuthor } from "../types";
 import { A, useTheme } from "@insta/ui";
 
 export const AuthorInfo: React.FC<IAuthor> = React.memo(
-  ({ name, photo, profileLink }) => {
+  ({ login, photoUrl }) => {
     const { colors } = useTheme();
 
     return (
@@ -16,10 +16,10 @@ export const AuthorInfo: React.FC<IAuthor> = React.memo(
           fontSize: 14
         }}
       >
-        <a href={profileLink}>
+        <a href="#">
           <img
-            src={photo.src}
-            alt={photo.alt}
+            src={photoUrl}
+            alt={`avatar-${login}`}
             css={{
               height: 40,
               borderRadius: "50%",
@@ -27,9 +27,9 @@ export const AuthorInfo: React.FC<IAuthor> = React.memo(
             }}
           />
         </a>
-        <span css={{ fontWeight: "bold", marginRight: 10 }}>{name}</span>
+        <span css={{ fontWeight: "bold", marginRight: 10 }}>{login}</span>
 
-        <A href={profileLink}>Follow</A>
+        <A href={"#"}>Follow</A>
       </div>
     );
   }

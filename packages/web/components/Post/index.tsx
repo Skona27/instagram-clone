@@ -7,8 +7,11 @@ import { useTheme } from "@insta/ui";
 import { IPost } from "./types";
 
 export const Post: React.FC<IPost> = React.memo(
-  ({ likes, createdAt, comments, description, media, user }) => {
+  ({ likes, createdAt, comments, description, media, author }) => {
     const { colors } = useTheme();
+
+    // @TODO - Enable multiple photos on single post
+    const singleMedia = media[0] || null;
 
     return (
       <div
@@ -20,20 +23,22 @@ export const Post: React.FC<IPost> = React.memo(
           ":not(:first-of-type)": { marginTop: 50 }
         }}
       >
-        <img
-          src={media.src}
-          alt={media.alt}
-          css={{
-            flexBasis: "60%",
-            height: 600,
-            cursor: "pointer",
-            opacity: 0.85,
-            transition: "opacity .15s",
-            ":hover": {
-              opacity: 1
-            }
-          }}
-        />
+        {singleMedia && (
+          <img
+            src={singleMedia.src}
+            alt={singleMedia.alt}
+            css={{
+              flexBasis: "60%",
+              height: 600,
+              cursor: "pointer",
+              opacity: 0.85,
+              transition: "opacity .15s",
+              ":hover": {
+                opacity: 1
+              }
+            }}
+          />
+        )}
 
         <div
           css={{
@@ -42,10 +47,10 @@ export const Post: React.FC<IPost> = React.memo(
             flexBasis: "40%"
           }}
         >
-          <AuthorInfo {...user} />
+          <AuthorInfo {...author} />
 
           <div css={{ height: 385, overflowY: "scroll" }}>
-            <Comment {...{ author: user, text: description, createdAt }} />
+            <Comment {...{ author, content: description, createdAt }} />
 
             {comments.map((comment, index) => (
               <Comment {...comment} key={index} />

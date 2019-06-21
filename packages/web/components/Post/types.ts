@@ -7,25 +7,26 @@ export interface IMedia {
 }
 
 export interface IPost {
-  user: IAuthor;
-  media: IMedia;
+  author: IAuthor;
+  media: IMedia[];
   comments: IComment[];
   description: string;
-  likes: number;
-  createdAt: number;
+  likes: ILike[];
+  createdAt: Date;
 }
 
 export interface IAuthor {
-  name: string;
-  photo: {
-    src: string;
-    alt: string;
-  };
-  profileLink: string;
+  login: string;
+  photoUrl: string;
 }
 
 export interface IComment {
   author: IAuthor;
-  text: string;
-  createdAt: number;
+  content: string;
+  createdAt: Date;
+}
+
+export interface ILike {
+  authorLogin: string;
+  createdAt: Date;
 }
