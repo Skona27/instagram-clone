@@ -23,7 +23,8 @@ export class PostsService {
 
   async findAll(): Promise<IResponsePostDTO[]> {
     const posts = await this.postRepository.find({
-      order: { createdAt: "DESC" }
+      order: { createdAt: "DESC" },
+      cache: true
     });
     const post = posts.map(async post => {
       const comments = await this.commentsService.findAllForPost(post.id);
@@ -48,7 +49,10 @@ export class PostsService {
   }
 
   async findByID(postID: string): Promise<IResponsePostDTO> {
-    const post = await this.postRepository.findOne({ id: postID });
+    const post = await this.postRepository.findOne({
+      where: { id: postID },
+      cache: true
+    });
     const comments = await this.commentsService.findAllForPost(postID);
     const media = await this.mediaService.findAllForPost(postID);
     const author = await this.userService.findAByID(post.authorID);

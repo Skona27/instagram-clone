@@ -13,7 +13,10 @@ export class MediaService {
   ) {}
 
   async findAllForPost(postID: string): Promise<IMediaForResponse[]> {
-    const media = await this.mediaRepository.find({ postID });
+    const media = await this.mediaRepository.find({
+      where: { postID },
+      cache: true
+    });
     return media.map(singleMedia => {
       const { id, src, alt, type } = singleMedia;
       return { id, src, alt, type };

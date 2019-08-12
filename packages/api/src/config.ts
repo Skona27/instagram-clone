@@ -13,6 +13,9 @@ export const config: IConfig = {
     database: process.env.DB_DATABASE,
     entities: ["src/**/entities/*{.ts,.js}"],
     synchronize: true,
-    logging: true
+    logging: false,
+    cache: {
+      type: "redis"
+    }
   }
 };

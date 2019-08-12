@@ -17,7 +17,8 @@ export class CommentsService {
   async findAllForPost(postID: string): Promise<ICommentForResponse[]> {
     const comments = await this.commentRepository.find({
       where: { postID },
-      order: { createdAt: "ASC" }
+      order: { createdAt: "ASC" },
+      cache: true
     });
 
     const comment = comments.map(async comment => {

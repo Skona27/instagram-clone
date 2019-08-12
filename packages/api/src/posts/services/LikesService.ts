@@ -17,7 +17,8 @@ export class LikesService {
   async findAllForPost(postID: string): Promise<ILikeForResponseDTO[]> {
     const likes = await this.likeRepository.find({
       where: { postID },
-      order: { createdAt: "ASC" }
+      order: { createdAt: "ASC" },
+      cache: true
     });
     const like = likes.map(async like => {
       const { authorID, createdAt, id } = like;

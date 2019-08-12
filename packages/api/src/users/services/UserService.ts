@@ -13,7 +13,10 @@ export class UserService {
   ) {}
 
   async findAByID(userID: string): Promise<IUserForResponse> {
-    const user = await this.userRepository.findOne({ id: userID });
+    const user = await this.userRepository.findOne({
+      where: { id: userID },
+      cache: true
+    });
     const { email, login, photoUrl } = user;
     return { email, login, photoUrl };
   }
